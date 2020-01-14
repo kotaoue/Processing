@@ -10,7 +10,7 @@ void setup() {
   gifExport = new GifMaker(this, "export.gif"); 
   gifExport.setRepeat(0);
   gifExport.setQuality(10);
-  gifExport.setDelay(20);
+  gifExport.setDelay(50);
 }
 
 void draw() {
@@ -50,7 +50,7 @@ void draw() {
 
   count++;
 
-  if (frameCount <= 50) {
+  if (frameCount <= 50 * 2) {
     gifExport.addFrame();
   } else {
     gifExport.finish();
