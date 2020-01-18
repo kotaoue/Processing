@@ -1,10 +1,19 @@
-int barWidth = 20;
-int lastBar = -1;
+import gifAnimation.*;
+GifMaker gifExport;
+
+int fps = 5;
+int movieSec = 5;
 
 void setup() {
   size(506, 253);
+  frameRate(fps);
   noStroke();
   background(0);
+
+  gifExport = new GifMaker(this, "export.gif");
+  gifExport.setRepeat(0);
+  gifExport.setQuality(10);
+  gifExport.setDelay(fps);
 }
 
 void draw() {
@@ -16,7 +25,13 @@ void draw() {
   changeColorTriangle(width / 2, height, width, height, width /2, height / 2, 255);
 
   randomConcentrationLine(randomInt(3, 5), 2);
-  adjustedWidthText("money", width / 2, height / 2, randomInt(64, 96), 128, 1);
+  adjustedWidthText("money", width / 2, height / 2, randomInt(64, 96), 128, 2);
+
+  if (frameCount <= fps * movieSec) {
+    gifExport.addFrame();
+  } else {
+    gifExport.finish();
+  }
 }
 
 int randomInt(int low, int high) {
