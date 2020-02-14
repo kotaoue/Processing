@@ -5,7 +5,7 @@ float xstart = 0;
 float ynoise = 0;
 float bgColor = 150;
 
-int fps = 60;
+int fps = 120;
 int movieSec = 5;
 
 void setup() {
@@ -51,7 +51,7 @@ void drawPoint(float x, float y, float noiseFactor) {
   popMatrix();
 
   if (edgeSize >= 23) {
-    bgColor += 0.77;
+    bgColor += 0.04;
     if (bgColor > 255) {
       bgColor = 0;
     }  
